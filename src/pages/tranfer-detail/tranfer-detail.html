@@ -1,0 +1,31 @@
+<!--
+  Generated template for the TranferDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title><img src="assets/img/logo/app-10.png" alt="" width="150px" height="40px" style="align-items: center"></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-header class="header_detail" >
+            <span class="title" style="color: white;">รายการชำระเงิน</span>
+        </ion-card-header>
+        <ion-card-content *ngFor="let value of tranfer_detail">
+          <p><b>วันที่ - เวลา : </b> {{value.time}} </p>
+          <p><b>ร้านค้า : </b> {{value.customer_name}}</p>
+          <p><b>จำนวนที่ต้องชำระ : </b> {{value.transfer_user_customer_money}} บาท</p>
+          <p><b>ได้รับเงินคืนจากร้านค้า : </b> {{value.transfer_user_money_persent}} บาท</p>
+          <p><b>หักค่าธรรมเนียม 3% : </b> {{value.transfer_user_monney_cut}} บาท</p>
+          <p><b>ได้รับเงินคืนสุทธิ : </b> {{value.transfer_user_monney_discount}} บาท</p>
+          <p><b>รวมเป็นเงินที่ต้องจ่าย : </b> {{value.transfer_user_money_user}} บาท</p>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

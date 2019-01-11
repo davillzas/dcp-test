@@ -1,0 +1,188 @@
+
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>{{customer_name}}</ion-title>
+   <!--<ion-buttons end>
+      <button  ion-button (click)="goToSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+      <button  ion-button (click)="showFilters()">
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>-->
+  </ion-navbar>
+</ion-header> 
+
+<ion-content  class=" common-bg rlt">
+  <!-- content top -->
+<div class="bg-image" *ngFor="let customer of customer_detail" >
+  <div class="bg-overlay" padding>
+    <div>
+     <br>
+      <div class="pull-left">
+        <h3>{{customer.customer_name}}</h3>
+       
+      </div>
+
+      <!--<div class="pull-right" text-right>
+        <div class="rating">{{customer.vote_sum}} คะแนน</div>
+      </div>-->
+
+      <div class="clear"></div>
+    </div>
+    <div> <span>{{customer.customer_address}}</span></div>
+    <div> <span>รับเงินคืน : {{customer.discout[0].discout}}</span></div>
+
+    <div margin-top>
+      <ion-badge color="favorite" [hidden]="status_work != true"> OPEN NOW</ion-badge>
+      <ion-badge color="danger" [hidden]="status_work == true">CLOSE NOW</ion-badge>
+      <br>
+      <br>
+      <span [hidden] = "time_open_24 == true">เวลาทำการ :  {{ customer.work_time_open }} น. ถึง {{ customer.work_time_close }} น. </span>
+      <span [hidden] = "time_open_24 != true">เวลาทำการ :  เปิดบริการตลอด 24 ซม </span><br>
+      <span [hidden] = "open_customer_24 == true">วันที่ทำการ : วัน {{ customer.work_day }} วันหยุด : {{ customer.work_day_stop }}</span>
+      <span [hidden] = "open_customer_24 == false">วันที่ทำการ : เปิดบริการทุกวัน </span>
+    </div>
+   
+    <div class="line" margin-top margin-bottom></div>
+    <div margin-bottom>
+      <a href="tel: {{customer_telephone}}" class="btn-round">
+        <ion-icon name="call" color="favorite" ></ion-icon>
+      </a>
+      <!-- <div class="btn-round" >
+        <ion-icon name="bookmark" color="primary" ></ion-icon>
+         <ion-icon name="bookmark" ></ion-icon> 
+      </div> 
+      <a href="{{customer_facebook}}" class="btn-round" [hidden]="customer_facebook == false">
+          <ion-icon name="logo-facebook" color="facebook" ></ion-icon>
+      </a>-->
+      <a href="{{link_google}}" class="btn-round">
+        <ion-icon color="danger"  name="pin" ></ion-icon>
+      </a> 
+      
+      
+    </div>
+  </div>
+</div>
+
+<!--contac-->
+<div padding class="light-bg" *ngFor="let customer of customer_detail">
+  <div class="strong">
+    <div class="contac_title"> เกี่ยวกับร้านค้า </div>
+  </div> 
+
+  <div class="contac_menu">
+      <div class="contac_title_menu"> ที่อยู่ </div>
+      <span>{{customer.customer_address}}</span>
+      <span class="pull-right"></span>
+  </div>
+  <div class="contac_menu">
+      <div class="contac_title_menu"> เบอร์โทรศัพท์ </div>
+      <span>{{customer.customer_phone}}</span>
+      <span class="pull-right"></span>
+  </div>
+  <div class="contac_menu">
+      <div class="contac_title_menu"> ที่จอดรถ </div>
+      <span>{{customer_parking}}</span>
+      <span class="pull-right"></span>
+  </div>
+  <!-- <div class="contac_menu" [hidden]="customer_facebook == false">
+      <div class="contac_title_menu"> Facebook</div>
+      <a href="{{customer_facebook}}">
+          <span style="color: red">{{customer_name}}</span>
+      </a>
+      <span class="pull-right"></span>
+  </div>
+  <p>
+      <a href="#" ion-text color="primary" >
+        Website
+      <ion-icon ios="ios-exit" md="md-exit"></ion-icon>
+    </a>
+  </p> -->
+</div>
+<!-- <div class="block-footer" padding text-right (click)="goToMap()">
+  <span ion-text color="primary" >ดูตำแหน่งที่ตั้ง</span>
+  <ion-icon color="primary"  name="arrow-forward"></ion-icon>
+</div> -->
+<!-- end contac-->
+
+
+<!-- menu 
+<div padding class="light-bg margin-top-20">
+  <div class="strong">
+    <div class="contac_title"> บริการ </div>
+  </div>
+   <div class="menu" *ngFor="let menu of catagory_title">
+      <div class="menu-title">
+          <b>{{menu.catagory.menu_catagory_name}}</b>
+      </div>
+      <div *ngFor="let menu_customer of menu.menu" class="menu_custoemr">
+        <span>{{menu_customer.menu_name}}</span>
+        <span class="pull-right">ราคา {{menu_customer.menu_price}} บาท</span>
+      </div>
+  </div> 
+</div>
+<div class="block-footer" padding text-right (click)="goToMenu()">
+  <span ion-text color="danger" >บริการทั้งหมด</span>
+  <ion-icon color="danger"  name="arrow-forward"></ion-icon>
+</div>-->
+ <!-- end menu -->
+
+<!-- detail customer "1142" -->
+<div padding class="light-bg margin-top-20" *ngIf="cutomer_id == '1142'">
+    <div class="strong">
+        <div class="contac_title">รายละเอียด</div>
+    </div>
+    <ion-grid class="grid-no-padding" style=" margin-top: 10px">
+        <ion-row>
+            <img class="round" src="http://customer.discountpercent.com/img/banner/banner-02.jpg" width="500px" height="200px" alt="">
+        </ion-row>
+        <ion-row>
+          <p align="center">เราให้วงเงินเครดิตซื้อสินค้าเกษตร 30,000 บาท แบบไม่มีดอกเบี้ย ไม่ต้องมีคนค้ำประกัน ไม่เช็คเครดิต เครดิตนาน 1 ปี  สามารถซื้อสินค้าการเกษตรได้เลย เช่น ปุ๋ยประเภทต่างๆ วัตถุดิบทางการเกษตร บริการโดรนเกษตรฉีดพ่นปุ๋ย ยา ทางอากาศ ลดต้นทุน ลดเวลา คุ้มค่าต่อเกษตรกรมาก
+              โดยทางคลีนิกดิน เป็นศูนย์รวมวัสดุปรับปรุงดิน รับให้คำปรึกษา ตรวจเช็คสภาพดิน ทุกชนิด วัดค่า PH ความเป็นกรด-ด่าง การขาดแร่ธาตุสารอาหารในดิน</p>
+        </ion-row>
+    </ion-grid>
+</div>
+<!-- photo -->
+<div padding class="light-bg margin-top-20">
+  <div class="strong">
+      <div class="contac_title"> รูปภาพแนะนำ </div>
+  </div>
+  <ion-grid class="grid-no-padding" style=" margin-top: 10px">
+    <ion-row >
+      <ion-col col-4  *ngFor="let Pic_show_title of pic_title">
+        <img class="round" src="{{Pic_show_title}}" width="100%" height="100%" alt="">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+<div class="block-footer" padding text-right >
+    <button  ion-button color="favorite" (click)="goToPhotos_customer()" block> ดูรูปภาพทั้งหมด </button>
+</div>
+<!-- end photo -->
+
+<!-- review 
+<div padding class="light-bg margin-top-20">
+  <div class="strong">Reviews</div>
+  <div margin-top class="secondary">รีวิวจากผู้ใช้งาน</div>
+    <ion-list class="list-no-border">
+      <ion-item  text-wrap>
+      <ion-avatar item-left>
+        <img src="" alt="">
+      </ion-avatar>
+      <div class="strong">ชื่อผู้ใช้งาน</div>
+      <div class="text-sm">
+        <span class="strong"></span>
+        <span class="rating">คะแนน</span>
+        คอมเม้น
+      </div>
+    </ion-item>
+  </ion-list>
+</div>
+<div class="block-footer" padding text-right>
+    <button  ion-button color="favorite"  block> ดูรีวิวทั้งหมด </button>
+    <button  ion-button color="favorite"  block> ให้คะแนนและรีวิว </button>
+</div>-->
+<!-- end  review -->
+</ion-content>
+

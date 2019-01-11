@@ -1,0 +1,24 @@
+<!--
+  Generated template for the MenuPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>รายการบริการทั้งหมด</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item-group *ngFor="let menu of customer_detail">
+
+    <ion-item-divider bgColor class="strong uppercase">{{menu.catagory.menu_catagory_name}}</ion-item-divider>
+    <ion-item *ngFor="let menu_customer of menu.menu">
+      <span>{{menu_customer.menu_name}}</span>
+      <span class="pull-right">ราคา {{menu_customer.menu_price}} บาท</span>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

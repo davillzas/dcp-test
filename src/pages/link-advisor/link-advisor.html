@@ -1,0 +1,45 @@
+<!--
+  Generated template for the LinkAdvisorPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="primary"  >
+      
+      <!-- <button  ion-button class="nav-button" (click)="selectLocation()">
+        
+        {{ city_name }}
+        <ion-icon name="ios-arrow-down" class="text-md"></ion-icon> </button>-->
+        <div >
+            <img src="assets/img/logo/app-10.png" alt="" width="150px" height="40px" style="align-items: center">
+        </div>
+       
+      
+       <ion-buttons end>
+          <button  ion-button >
+              <ion-icon name="notifications"></ion-icon>
+          </button> 
+        <!--<button  ion-button (click)="goToBookmarks()">
+          <ion-icon name="bookmark"></ion-icon>
+        </button> 
+         <button  ion-button (click)="goToSearch()">
+          <ion-icon name="search"></ion-icon>
+        </button>  -->
+      </ion-buttons>
+     
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      
+      <ion-label color="primary">Link การแนะนำ</ion-label>
+      <ion-input value="https://customer.discountpercent.com/register/advisor/{{user_phone}}" disabled="true"></ion-input>
+      
+    </ion-item>
+    <button ion-button round (click)="get_link()">คัดลอก Link</button>
+  </ion-list>
+</ion-content>

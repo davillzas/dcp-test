@@ -1,0 +1,24 @@
+<!--
+  Generated template for the TopupH2hTypePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="primary" >
+        <div>
+            <img src="assets/img/logo/app-10.png" alt="" width="150px" height="40px" style="align-items: center">
+        </div>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row>
+              <ion-col *ngFor="let data_h2h of data_h2h" col-4>
+                  <img src="{{data_h2h.topup_h2h_icon}}" alt=""  (click)="topup_mobile(data_h2h)">
+              </ion-col>     
+        </ion-row>
+      </ion-grid>
+</ion-content>

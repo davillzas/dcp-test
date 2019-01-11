@@ -1,0 +1,62 @@
+<!--
+  Generated template for the TopupMobileQrcodePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+<ion-navbar color="primary" hideBackButton="true">
+    <div>
+      <img src="assets/img/logo/app-10.png" alt="" width="150px" height="40px" style="align-items: center">
+    </div>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-header style="text-align: center">
+      <h2>Qrcode ที่ใช้ในการชำระเงิน เติมเงินมือถือ</h2>
+      <b style="color: red;">โปรดอ่าน คำเตือนนี้ก่อน ทำรายการ</b>
+    </ion-card-header>
+
+    <br>
+    <p>
+      *บันทึกรูปภาพ Qrcode นี้ และนำไปชำระเงิน ใน Application ธนาคารที่ท่านมี เมื่อทำการชำระเงินเรียบร้อยแล้ว
+      ระบบจำทำการเติมเงินให้ทันที
+    </p>
+    <p>
+      *รายการนี้มีอายุ อยู่ได้ เพียง 10 นาที
+    </p>
+    <p>*1 QR Code สามารถใช้ชำระเงินได้เพียง 1 ครั้ง ต่อ 1 รายการ</p>
+    <br>
+    <img src="{{this.qr_code}}" imageViewer />
+
+    <!--<div text-center>
+        <button color="facebook" ion-button icon-end style="text-align: center" (click)="getPicture(this.qr_code)">
+            บันทึกรูปภาพ
+            <ion-icon name="image"></ion-icon>
+          </button>
+    </div>-->
+  <ion-card-content>
+    <ion-card-title>
+      <h2>Link Application ในการชำระเงิน</h2>
+    </ion-card-title>
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let link of link" col-4>
+          <img src="{{link.src}}" alt="" (click)="get_link(link.android,link.ios)">
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+
+    <ion-card-content>
+      <ion-card-title>
+        <button ion-button color="primary" block (click)="go_home()">กลับหน้าหลัก</button>
+
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

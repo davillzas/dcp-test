@@ -1,0 +1,121 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar color="primary"  hideBackButton="true">
+    
+    <!-- <button  ion-button class="nav-button" (click)="selectLocation()">
+      
+      {{ city_name }}
+      <ion-icon name="ios-arrow-down" class="text-md"></ion-icon> </button>-->
+      <div >
+          <img src="assets/img/logo/app-10.png" alt="" width="150px" height="40px" style="align-items: center">
+      </div>
+     
+    
+     <ion-buttons end>
+        <button  ion-button (click)="refresh_user()">
+            <ion-icon name="md-refresh"> รีเฟรช</ion-icon>
+        </button> 
+      <!--<button  ion-button (click)="goToBookmarks()">
+        <ion-icon name="bookmark"></ion-icon>
+      </button> 
+       <button  ion-button (click)="goToSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>  -->
+    </ion-buttons>
+   
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content class=" common-bg">
+    <!-- Slider -->
+  
+
+    <ion-fab right bottom >
+       <img (click)="get_point()" src="https://customer.discountpercent.com/img/dashboard_icon/app12.png" ion-fab width="100%" style="background-color:#000000;"  alt="" >
+        <ion-fab-list side="top">
+          <button id="btn_fls" ion-button round (click)="withdraw()">Reward : {{this.point}}</button>
+          <a (click)="withdraw()" target="_blank" id="btn_fls" ion-button round>แลก DCP COIN</a>
+          <button id="btn_fls" ion-button round (click)="hb_wallet()">HB Wallet</button>
+          <a href="https://www.cash2coins.com/" target="_blank" id="btn_fls" ion-button round>Cash 2 Coins</a>
+        
+        </ion-fab-list>
+    </ion-fab>
+    
+    <div >
+        <ion-slides pager class="pager-inner slideshow">
+  
+        <ion-slide *ngFor="let slide of slide">
+          <img src="{{ slide.slides_app_pic }}" alt="" width="100%" height="100%">
+        </ion-slide>
+        
+          </ion-slides>
+    </div>
+    
+
+    <div  style="text-align: center;">
+      <ion-grid>
+        <ion-row>
+              <ion-col *ngFor="let value_icon of value_icon" col-3>
+                  <img src="{{this.value_icon.img_icon}}" alt="" (click)="link_event(this.value_icon.id)">
+              </ion-col>     
+        </ion-row>
+      </ion-grid>
+    </div>
+  
+    <div padding style="text-align: center;">
+      <img src="assets/img/payment/icon_in_app-71.png" alt=""><br>
+       <ion-item ion-item color="light"  class="no-border">
+          
+            <ion-label>เลือกร้านค้าตามจากจังหวัด</ion-label>
+            
+            <ion-select [ngModel]="city_id" (ionChange)="show_city_id($event)">
+                <ion-option *ngFor="let city of value_city"  value="{{city.city_id}}" >{{ city.city_name }}</ion-option> 
+            </ion-select>
+        </ion-item> 
+    </div>
+    
+        <div padding>
+            
+            <div   margin-bottom >
+                <ion-grid  class="">
+                  <ion-row center>
+                    <ion-col col-12 *ngFor="let category of catagoryList" >
+                      <ion-item class="light category" (click)="viewGroup(category)" [ngStyle]="{'background-color': 'white','color' : 'black'}"> 
+                        <ion-row >
+                          <ion-col col-2>
+                              <img src="{{this.category.category_icon}}" width="40px" height="40px">
+                          </ion-col>
+                          <ion-col col-10>
+                              {{category.category_name}}
+                          </ion-col>
+                           
+                          </ion-row>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </div>
+        </div>
+ 
+  
+      <div padding>
+        <img class="center" src="https://customer.discountpercent.com/img/dashboard_icon/icon_tbd_01.png" style="width : auto ; height : auto; margin: auto;" (click)="tbd()">
+      </div>
+      <br>
+    
+    <div >
+        <img src="assets/img/payment/app_2-13.png" style="width : auto ; height : auto; margin: auto;" (click)="startVideo()">
+    </div>
+      
+  
+ 
+  </ion-content>
+

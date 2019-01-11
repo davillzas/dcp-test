@@ -1,0 +1,106 @@
+<!--
+  Generated template for the SignUpPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title><img src="assets/img/logo/app-10.png" alt="" width="150px" height="40px" style="align-items: center"></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="sign-up">
+  <!-- <button  ion-button color="facebook" block class="margin-bottom">สมัครผ่าน Facebook</button>
+  <button  ion-button color="googleplus" block class="margin-top">สมัครผ่าน Google+</button>
+
+  <div text-center class="margin-top-20 secondary">หรือกรอกข้อความที่เป็นส่วนตัว</div> -->
+  <img src="assets/img/logo/app-09.png" style="width : auto ; height : auto">
+  <div text-center class="margin-top-20 secondary">สมัครสมาชิก ส่วนลดเปอร์เซ็นต์</div>
+  <br>
+  <ion-list class="list-form">
+  <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
+    <!-- advisor -->
+    <ion-item class="margin-top" [ngClass]="{'error-border':!authForm.controls.adviser_data.valid && authForm.controls.adviser_data.touched}">
+      <ion-label>เบอร์โทรศัพท์ผู้แนะนำ :</ion-label>
+      <ion-input formControlName="adviser_data" [(ngModel)]="adviser_data" type="number" placeholder="กรุณากรอก เบอร์โทรศัพท์ผู้แนะนำ"
+        (focusout)="check_adviser($event)"></ion-input>
+    </ion-item>
+  
+    <ion-item class="margin-top" [hidden]="this.adviser_name == null">
+      <ion-label>ชื่อผู้แนะนำ : <b>{{this.adviser_name}}</b></ion-label>
+    </ion-item>
+    <ion-item *ngIf="authForm.controls.adviser_data.hasError('required') && authForm.controls.adviser_data.touched">
+      <p style="color:red;">กรุณาตรวจสอบเบอร์ผู้แนะนำ</p>
+    </ion-item>
+    <!-- advisor -->
+    <br>
+    <!-- fname -->
+    <ion-item class="margin-top" [ngClass]="{'error-border':!authForm.controls.fname.valid && authForm.controls.fname.touched}">
+      <ion-label>ชื่อผู้ใช้งาน <span style="color:red;">*</span> :</ion-label>
+      <ion-input formControlName="fname" type="text" placeholder="กรุณากรอกชื่อผู้ใช้งาน"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="authForm.controls.fname.hasError('required') && authForm.controls.fname.touched">
+      <p style="color:red;">คุณยังไม่ได้กรอก ชื่อผู้ใช้งาน</p>
+    </ion-item>
+    <!-- fname -->
+    <!-- lname -->
+    <ion-item class="margin-top" [ngClass]="{'error-border':!authForm.controls.lname.valid && authForm.controls.lname.touched}">
+      <ion-label>นามสกุลผู้ใช้งาน <span style="color:red;">*</span> :</ion-label>
+      <ion-input formControlName="lname" type="text" placeholder="กรุณากรอกนามสกุลผู้ใช้งาน"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="authForm.controls.lname.hasError('required') && authForm.controls.lname.touched">
+      <p style="color:red;">คุณยังไม่ได้กรอก นามสกุลผู้ใช้งาน</p>
+    </ion-item>
+    <!-- lname -->
+    <!-- phone -->
+    <ion-item class="margin-top" [ngClass]="{'error-border':!authForm.controls.phone_data.valid && authForm.controls.phone_data.touched}">
+      <ion-label>เบอร์โทรศัพท์ <span style="color:red;">*</span> :</ion-label>
+      <ion-input formControlName="phone_data" [(ngModel)]="phone" type="number" placeholder="กรุณากรอก เบอร์โทรศัทพ์ของท่าน"></ion-input>
+    </ion-item>
+  
+    <ion-item *ngIf="authForm.controls.phone_data.hasError('required') && authForm.controls.phone_data.touched">
+      <p style="color:red;">คุณยังไม่ได้กรอก เบอร์โทรศัทพ์ของท่าน <br> หรือ เบอร์โทรศัทพ์ของท่าน ไม่ถูกต้อง</p>
+    </ion-item>
+    <!-- phone -->
+    <!-- email -->
+    <ion-item class="margin-top" [ngClass]="{'error-border':!authForm.controls.email_data.valid && authForm.controls.email_data.touched}">
+      <ion-label>Email <span style="color:red;">*</span> :</ion-label>
+      <ion-input formControlName="email_data" [(ngModel)]="email" type="email" placeholder="กรุณากรอก email"></ion-input>
+    </ion-item>
+  
+    <ion-item *ngIf="authForm.controls.email_data.hasError('required') && authForm.controls.email_data.touched">
+      <p style="color:red;">คุณยังไม่ได้กรอก Email <br> หรือ Email ของท่านไม่ถูกต้อง</p>
+    </ion-item>
+    <!-- email -->
+    <!-- password -->
+    <ion-item class="margin-top" [ngClass]="{'error-border':!authForm.controls.Password_data.valid && authForm.controls.Password_data.touched}">
+      <ion-label>Password <span style="color:red;">*</span> :</ion-label>
+      <ion-input formControlName="Password_data" type="password" placeholder="กรุณากรอก Password"></ion-input>
+    </ion-item>
+  
+    <ion-item *ngIf="authForm.controls.Password_data.hasError('required') && authForm.controls.Password_data.touched">
+      <p style="color:red;">คุณยังไม่ได้กรอก Password <br> หรือ กรอกไม่ครบ 6 หลัก</p>
+    </ion-item>
+  
+    <ion-item class="margin-top" [ngClass]="{'error-border':!authForm.controls.password_data_again.valid && authForm.controls.password_data_again.touched}">
+      <ion-label>ยืนยัน Password <span style="color:red;">*</span> :</ion-label>
+      <ion-input formControlName="password_data_again" type="password" placeholder="กรุณากรอก ยืนยัน Password"></ion-input>
+    </ion-item>
+  
+    <ion-item *ngIf="authForm.controls.password_data_again.hasError('required') && authForm.controls.password_data_again.touched">
+      <p style="color:red;">คุณยังไม่ได้กรอก Password อีกครั้ง <br> หรือ กรอกไม่ครบ 6 หลัก</p>
+    </ion-item>
+    <!-- password -->
+    <br>
+    <button ion-button color="favorite" [disabled]="!authForm.valid" block>สมัครสมาชิก</button>
+    <!-- <button ion-button full color="primary" [disabled]="!authForm.valid"  style="margin-top: 20px;" type="submit">Login</button>   -->
+  </form>
+  </ion-list>
+  <span style="color:red;">* จำเป็นต้องกรอกข้อมูลให้ครบถ้วน</span>
+  <br><br>
+  
+  <button ion-button color="secondary" (click)="login_page()" block>หรือเข้าสู่ระบบจากเบอร์โทรศัพท์</button>
+  
+  <!-- <div text-center class="margin-top-20 secondary" (click)="forgotPwd()">Forgot password?</div> -->
+  </ion-content>

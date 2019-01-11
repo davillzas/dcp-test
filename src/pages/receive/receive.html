@@ -1,0 +1,34 @@
+<!--
+  Generated template for the ReceivePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="primary">
+      <ion-title><img src="assets/img/logo/app-10.png" alt="" width="150px" height="40px" style="align-items: center"></ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+  <ion-content padding>
+      <ion-refresher (ionRefresh)="doRefresh($event)">
+          <ion-refresher-content>
+    
+          </ion-refresher-content>
+        </ion-refresher>
+  
+      <div padding class="light-bg margin-top-10">
+        <div class="strong">
+          <div class="contac_title">รายการรับเงิน </div>
+        </div>
+        <div class="menu" *ngFor="let value of data_receive; let i = index;">
+            <div class="light-bg margin-top-10">
+              <span>รายการที่ : {{i+1}} เงินที่ได้รับ : {{value.receive_user_money}} </span>
+              <span class="pull-right"> </span>
+            </div>
+        </div>
+      </div>
+  </ion-content>

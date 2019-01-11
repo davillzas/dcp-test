@@ -1,0 +1,84 @@
+<!--
+  Generated template for the WithdrawPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="primary">
+      <ion-title><img src="assets/img/logo/app-10.png" alt="" width="150px" height="40px" style="align-items: center"></ion-title>
+    </ion-navbar>
+    <ion-item class="no-border header_wallet" style="top : 10px" pading>
+    <ion-avatar item-left>
+        <span class="strong"> DCP Reward</span>
+    </ion-avatar>
+    <ion-avatar item-right>
+        <span class="strong" style="color : #69BB7B; font-size: 20px;">{{wallet}}</span>
+    </ion-avatar>
+    </ion-item>
+  </ion-header>
+
+
+<ion-content padding>
+
+    <ion-card-header>
+        <h1>คำสั่งนำ Reward แลก DPC coin</h1>
+    </ion-card-header>
+
+    <ion-list class="list-form">
+        <form [formGroup]="form_withdown" (ngSubmit)="onSubmit_withdown(form_withdown.value)" >
+            <ion-item [ngClass]="{'error-border':!form_withdown.controls.tbd_code.valid && form_withdown.controls.tbd_code.touched}">
+                <ion-label stacked><h3>เลขบัญชีของท่าน C2C<span style="color:red;">*</span></h3></ion-label>
+                <ion-input formControlName="tbd_code" type="text" placeholder="กรุณาใส่เลขบัญชีของท่าน C2C ของท่าน"></ion-input>
+            </ion-item>
+                <ion-item *ngIf="form_withdown.controls.tbd_code.hasError('required') && form_withdown.controls.tbd_code.touched">
+                <p style="color:red;">กรุณาใส่เลขบัญชีของท่าน C2C</p>
+            </ion-item>
+            <ion-item [ngClass]="{'error-border':!form_withdown.controls.money.valid && form_withdown.controls.money.touched}">
+                <ion-label stacked><h3>จำนวน Reward<span style="color:red;">*</span></h3></ion-label>
+                <ion-input formControlName="money" type="number" [(ngModel)]="money" (focusout)="check_money($event)" placeholder="กรุณาใส่จำนวน Reward ที่ต้องการถอน"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="form_withdown.controls.money.hasError('required') && form_withdown.controls.money.touched">
+            <p style="color:red;">กรุณาใส่จำนวน Reward ที่ต้องการถอน</p>
+            </ion-item>
+            <br>
+            <button ion-button [disabled]="!form_withdown.valid" block full>ยืนยันการทำรายการ</button>
+        </form>
+    </ion-list>
+
+    <!--<ion-list class="list-form" [hidden] = "this.bank_number_check == '2'">
+        <form [formGroup]="form_withdown_prompay" (ngSubmit)="onSubmit_withdown_prompay(form_withdown_prompay.value)" >
+            <ion-item>
+                <ion-label stacked><h3>ธนาคาร<span style="color:red;">*</span></h3></ion-label>
+                <ion-select formControlName="bank_withdown_prompay" placeholder="กรุณาเพิ่มบัญชีธนาคาร" interface="popover">
+                  <ion-option value="BBL">ธนาคารกรุงเทพ จำกัด(มหาชน)</ion-option>
+                  <ion-option value="BBC">ธนาคารกรุงเทพพาณิชย์การ</ion-option>
+                  <ion-option value="KTB">ธนาคารกรุงไทย(มหาชน)</ion-option>
+                  <ion-option value="BAY">ธนาคารกรุงศรีอยุธยา(มหาชน)</ion-option>
+                  <ion-option value="KBANK">ธนาคารกสิกรไทย(มหาชน)</ion-option>
+                  <ion-option value="CITI">ธนาคารซิตี้แบงค์ </ion-option>
+                  <ion-option value="TMB">ธนาคารทหารไทย(มหาชน)</ion-option>
+                  <ion-option value="SCB">ธนาคารไทยพาณิชย์(มหาชน)</ion-option>
+                  <ion-option value="NBANK">ธนาคารธนชาติ</ion-option>
+                  <ion-option value="SCIB">ธนาคารนครหลวงไทย</ion-option>
+                  <ion-option value="GSB">ธนาคารออมสิน</ion-option>
+                  <ion-option value="GHB">Sธนาคารอาคารสงเคราะห์</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><h3>เบอร์พร้อมเพย์<span style="color:red;">*</span></h3></ion-label>
+                <ion-input formControlName="bank_number_prompay" type="number"   placeholder="เพิ่มจำนวนเงินจากสลิปการโอนเงิน"></ion-input>
+            </ion-item>
+            <ion-item >
+                <ion-label stacked><h3>ชื่อบัญชีธนาคาร<span style="color:red;">*</span></h3></ion-label>
+                <ion-input formControlName="bank_name_withdown_prompay" type="text"   placeholder="เพิ่มจำนวนเงินจากสลิปการโอนเงิน"></ion-input>
+            </ion-item>
+            <ion-item >
+                <ion-label stacked><h3>จำนวนเงิน<span style="color:red;">*</span></h3></ion-label>
+                <ion-input formControlName="money_withdown_prompay" type="number"   placeholder="เพิ่มจำนวนเงินจากสลิปการโอนเงิน"></ion-input>
+            </ion-item>
+            <button ion-button  full>ยืนยันการทำรายการ</button>
+        </form>
+    </ion-list>-->
+</ion-content>

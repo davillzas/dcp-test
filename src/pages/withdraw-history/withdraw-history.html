@@ -1,0 +1,45 @@
+<!--
+  Generated template for the WithdrawHistoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title><img src="assets/img/logo/app-10.png" alt="" width="150px" height="40px" style="align-items: center"></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header class="header_detail" >
+        <span class="title" style="color: white;">รายละเอียดบัญชี</span>
+    </ion-card-header>
+    <ion-card-content *ngFor="let value of data_bank_account">
+      <p><b>ธนาคาร : </b> {{this.bank}}</p>
+      <p><b>ชื่อบัญชี : </b> {{value.name_account}}</p>
+      <p [hidden] = "this.check_form == '2'"><b>เลขที่บัญชี : </b> {{value.bank_account_number}}</p>
+      <p [hidden] = "this.check_form == '1'"><b>เบอร์พร้อมเพย์ : </b> {{value.PromptPay}}</p>
+
+    </ion-card-content>
+</ion-card>
+<ion-card>
+    <ion-card-header class="header_detail" >
+        <span class="title" style="color: white;">ส่งคำร้องขอถอนเงินออกจากระบบ</span>
+    </ion-card-header>
+    <ion-card-content >
+    <ion-list class="list-form" [hidden] = "this.bank_number_check == '2'">
+      <form [formGroup]="form_withdown" (ngSubmit)="onSubmit_withdown(form_withdown.value)" >
+          <ion-item >
+              <ion-label stacked><h3>จำนวนเงิน<span style="color:red;">*</span></h3></ion-label>
+              <ion-input formControlName="money" type="number"   placeholder="เพิ่มจำนวนเงินจากสลิปการโอนเงิน"></ion-input>
+          </ion-item>
+          <button ion-button  full>ยืนยันการทำรายการ</button>
+      </form>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+</ion-content>

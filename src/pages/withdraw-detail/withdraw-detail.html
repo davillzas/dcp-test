@@ -1,0 +1,46 @@
+<!--
+  Generated template for the WithdrawDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="primary">
+      <ion-title><img src="assets/img/logo/app-10.png" alt="" width="150px" height="40px" style="align-items: center"></ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content>
+  
+        </ion-refresher-content>
+      </ion-refresher>
+
+      <div padding class="light-bg margin-top-10">
+          <div class="strong">
+            <div class="contac_title">รอการตรวจสอบ </div>
+          </div>
+          <div [hidden] = "data_withdraw_1 == null" class="menu" *ngFor="let value of data_withdraw_1; let i = index;">
+            <div class="light-bg margin-top-10">
+              <span>{{i+1}} วันที่ : {{value.withdraw_date}} </span>
+              <span class="pull-right"> จำนวนเงิน : {{value.withdraw_money_number}}</span>
+            </div>
+          </div>
+      </div>
+      
+      <div padding class="light-bg margin-top-10">
+          <div class="strong">
+            <div class="contac_title">รายการที่ถอนเงินแล้ว </div>
+          </div>
+          <div [hidden] = "data_withdraw_2 == null" class="menu" *ngFor="let value_2 of data_withdraw_2; let i = index;">
+            <div class="light-bg margin-top-10">
+              <span>{{i+1}} วันที่ : {{value_2.withdraw_date}} </span>
+              <span class="pull-right"> จำนวนเงิน : {{value_2.withdraw_money_number}}</span>
+            </div>
+          </div>
+      </div>
+</ion-content>

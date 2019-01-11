@@ -1,0 +1,76 @@
+<!--
+  Generated template for the TopupMobilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="primary" >
+        <div>
+            <img src="assets/img/logo/app-10.png" alt="" width="150px" height="40px" style="align-items: center">
+        </div>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content>
+    <ion-card>
+        <ion-card-header  style="text-align: center">
+          เลือกจำนวนเงิน
+        </ion-card-header>
+        <ion-card-content style="  text-align: center">
+            <ion-grid>
+                <ion-row>
+                      <ion-col *ngFor="let data_money of data_money" col-4>
+                          <button ion-button outline (click)="select_amount(data_money.money_h2h_amount)">{{data_money.money_h2h_amount}} บาท</button>
+                      </ion-col>     
+                </ion-row>
+              </ion-grid>
+        </ion-card-content>
+      </ion-card>
+      <ion-card  [hidden]="swit_lot == 1">
+        <ion-card-header>
+          ใส่เบอร์โทรศัพท์ที่ต้องการเติมเงิน
+        </ion-card-header>
+        <ion-card-content>
+          <div  [hidden]="input_show == 2" style="  text-align: center">
+              <form class="list-form" [formGroup]="topup" (ngSubmit)="onSubmit_topup(topup.value)">
+                <ion-item >
+                    <ion-label stacked><h3>Amount<span style="color:red;">*</span></h3></ion-label>
+                    <ion-input type="number" [(ngModel)]="topup_amount" formControlName="topup_amount"  placeholder="Add Amount" disabled="true"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label stacked><h3>Telephone<span style="color:red;">*</span></h3></ion-label>
+                  <ion-input type="number" formControlName="topup_telephone"  placeholder="Add Telephone Number"></ion-input>
+                </ion-item>
+                <br>
+                <button ion-button color="primary" class="btn_temap" [disabled]="!topup.valid" >Confirm</button>
+              </form>
+          </div>
+         
+        </ion-card-content>
+      </ion-card> 
+      <ion-card  [hidden]="payment_type_show == 1">
+        <ion-card-header>
+          เลือกวิธีการชำระเงินของท่าน
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item class="no-border header_wallet"  style="top : 10px;" pading>
+                <ion-avatar item-left>
+                    <span class="strong"> DPC Reward</span> 
+                </ion-avatar>
+                <ion-avatar item-right>   
+                  <span class="strong" style="color : #69BB7B; font-size: 20px;">{{wallet}} </span>
+                </ion-avatar>
+              </ion-item>    
+          <ion-grid>
+            <ion-row>
+                  <ion-col *ngFor="let data_payment of data_payment" col-4>
+                      <img src="{{data_payment.pic}}" alt=""  (click)="topup_mobile(data_payment.payment_id)">
+                     
+                  </ion-col>     
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card> 
+</ion-content>

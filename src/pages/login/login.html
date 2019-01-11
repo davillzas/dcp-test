@@ -1,0 +1,54 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+        <ion-title><img src="assets/img/logo/app-10.png" alt="" width="150px" height="40px" style="align-items: center"></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="login">
+  <img src="assets/img/logo/app-09.png" style="width : auto ; height : auto">
+  <div text-center class="margin-top-20 secondary">เข้าสู่ระบบด้วย เบอร์โทรศัพท์ <br>หรือ สมัครสมาชิกด้วย เบอร์โทรศัพท์<br> <p>(login with Telephone or register with Telephone)</p></div> 
+
+  <ion-list class="list-form">
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
+
+        <ion-item class="margin-top" [ngClass]="{'error-border':!authForm.controls.phone_data.valid && authForm.controls.phone_data.touched}">
+            <ion-label >เบอร์โทรศัพท์ <span style="color:red;">*</span> :</ion-label>
+            <ion-input formControlName="phone_data" type="number" placeholder="กรุณากรอก เบอร์โทรศัทพ์ของท่าน" ></ion-input>
+        </ion-item>
+  
+        <ion-item *ngIf="authForm.controls.phone_data.hasError('required') && authForm.controls.phone_data.touched">
+            <p style="color:red;">คุณยังไม่ได้กรอก เบอร์โทรศัพท์ <br> หรือ กรอกไม่ครบ 10 หลัก</p>
+        </ion-item>
+
+
+        <ion-item class="margin-top" [ngClass]="{'error-border':!authForm.controls.Password_data.valid && authForm.controls.Password_data.touched}">
+          <ion-label >รหัสผ่าน <span style="color:red;">*</span> :</ion-label>
+          <ion-input formControlName="Password_data" type="password" placeholder="กรุณากรอก รหัสผ่านของท่าน" ></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="authForm.controls.Password_data.hasError('required') && authForm.controls.Password_data.touched">
+          <p style="color:red;">คุณยังไม่ได้กรอก รหัสผ่าน <br> หรือ password อย่างน้อย 6 หลัก</p>
+      </ion-item>
+
+      <br>
+      <button ion-button  color="favorite"  [disabled]="!authForm.valid"  block >LOGIN</button>
+    </form>
+    
+  </ion-list>
+  <button ion-button color="secondary" block (click)="register_page()">สมัครสมาชิก</button>
+
+  
+<div text-center class="margin-top-20 secondary" ><a href="https://customer.discountpercent.com/reset/reset_password"
+    class="btn-round">
+<span style="size: 25 pt;"> ลืมรหัสผ่าน</span>
+  </a>  |  <a href="http://line.me/ti/p/@pbp0928s" class="btn-round">
+<span style="font-size: 25 pt;">ติดต่อเจ้าหน้าที่</span>
+  </a></div>
+ <br>
+</ion-content>

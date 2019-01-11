@@ -1,0 +1,161 @@
+<!--
+  Generated template for the WalletPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title><img src="assets/img/logo/app-10.png" alt="" width="150px" height="40px" style="align-items: center"></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content>
+  
+      </ion-refresher-content>
+    </ion-refresher>
+
+  <div class="header_wallet">
+      <ion-item class="no-border" >
+
+          <ion-avatar item-left>
+              <span class="strong"> ยอดคะแนนของคุณ</span> 
+          </ion-avatar>
+          <ion-avatar item-right>   
+            <span class="strong" style="color : #69BB7B; font-size: 20px;">{{wallet}} Point</span>
+          </ion-avatar>
+          </ion-item>    
+  </div>
+  <ion-item-divider bgColor class="divider_wallet"></ion-item-divider>
+    <div padding>
+      <ion-segment [(ngModel)]="pet">
+        <ion-segment-button value="deposit">
+          เติมเงินเข้าระบบ
+        </ion-segment-button>
+        <ion-segment-button value="draw_money">
+            ถอนเงิน
+        </ion-segment-button>
+        <ion-segment-button value="report">
+          รายการ
+        </ion-segment-button>
+      
+      </ion-segment>
+    </div>
+    
+    <div [ngSwitch]="pet">
+      <ion-list *ngSwitchCase="'deposit'">
+          <ion-slides pager class="pager-inner slideshow">
+  
+              <ion-slide *ngFor="let slide of slides">
+                <img src="{{ slide.src }}" alt="" width="100%" height="100%">
+              </ion-slide>
+          
+            </ion-slides>
+            <ion-card>
+              <ion-card-header>
+                เลือก Packet ที่ต้องการซื้อ
+              </ion-card-header>
+              <ion-card-content style="  text-align: center">
+                <ion-row >
+                  <ion-col *ngFor="let packet of packet_card">
+                    <div><button ion-button outline (click)="select_amount(packet.packet_card_price)">{{packet.packet_card_name}} Point</button></div>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+          
+        <ion-card>
+          <ion-card-header>
+              <h1>แจ้งการซื้อ Packet</h1>
+          </ion-card-header>
+          <ion-card-content>
+              <ion-list class="list-form">
+                  <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)" >
+                      
+                      <ion-item >
+                          <ion-label stacked><h3>วันที่จากสลิปการโอนเงิน<span style="color:red;">*</span></h3></ion-label>
+                        <ion-datetime formControlName="user_date"  class="date" displayFormat="DD/MM/YYYY " pickerFormat="DD/MM/YYYY"  placeholder="เพิ่มวันที่โอนเงินจากสลิป "></ion-datetime>
+                      </ion-item>
+                      <ion-item >
+                          <ion-label stacked><h3>เวลาจากสลิปการโอนเงิน<span style="color:red;">*</span></h3></ion-label>
+                            <ion-datetime formControlName="user_time" class="date" displayFormat="HH : mm" pickerFormat="HH:mm"  placeholder="เพิ่มเวลาโอนเงินจากสลิป"></ion-datetime>
+                      </ion-item>
+                      <ion-item >
+                          <ion-label stacked><h3>จำนวนเงินจากสลิปการโอนเงิน<span style="color:red;">*</span></h3></ion-label>
+                          <ion-input formControlName="user_monney" type="number" [(ngModel)]="user_monney"  placeholder="เพิ่มจำนวนเงินจากสลิปการโอนเงิน"></ion-input>
+                          
+                      </ion-item>
+                      <div>
+                          <ion-label stacked><h3>เพิ่มสลิปการโอนเงิน<span style="color:red;">*</span></h3></ion-label>
+                          <img src="{{(lastImage)}}" class="img_headder" width="100" height="150" alt="" (click)="presentActionSheet()"><br><br>
+                        
+                      </div >
+                      <br>
+                      <button ion-button  full>ยืนยันการทำรายการ</button>
+                  </form>
+              </ion-list>
+          </ion-card-content>
+        </ion-card>
+          
+      </ion-list>
+    
+      <ion-list *ngSwitchCase="'report'">
+        <ion-item-group>
+          <ion-item (click)="deposit()">
+            รายการเติมเงิน
+          </ion-item>
+          <ion-item (click)="withdraw()">
+            รายการถอนเงิน
+            </ion-item>
+          <ion-item (click)="tranfer()">
+            รายการใช้บริการ
+          </ion-item>
+          <ion-item (click)="receive()">
+            รายการรับเงิน
+          </ion-item>
+          <ion-item (click)="maketing()">
+            ค่าการตลาด
+          </ion-item>
+        </ion-item-group>
+          
+        
+   
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'draw_money'">
+          
+          <ion-card>
+              <ion-card-header>
+                  <h1>ส่งคำร้องขอถอนเงินออกจากระบบ</h1>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-list class="list-form">
+                  <ion-item>
+                      <ion-label stacked><h3>เลือกรูปแบบการถอนเงิน<span style="color:red;">*</span></h3></ion-label>
+                      <ion-select [ngModel]="check_bank_bnumber" (ngModelChange)="updateCucumber($event)" name="sel3" placeholder="กรุณาเพิ่มบัญชีธนาคาร" interface="popover">
+                        <ion-option value="1">เบอร์พร้อมเพย์</ion-option>
+                        <ion-option value="2">เลขที่บัญชีธนาคาร</ion-option>
+                      </ion-select>
+                  </ion-item>
+                  <button ion-button  full (click)="get_withdraw_user()">ขั้นตอนถัดไป</button>
+                </ion-list>
+                <ion-list class="list-form">
+                    <ion-item>
+                        <ion-label stacked><h3>เลือกจากประวัติเก่า<span style="color:red;">*</span></h3></ion-label>
+                        <ion-select [ngModel]="data_bankacount_id" (ngModelChange)="user_check_bank_account($event)" name="sel3" placeholder="กรุณาเพิ่มบัญชีธนาคาร" interface="popover">
+                            <ion-option  *ngFor="let value_bank of data_select_bank" value="{{value_bank[1]}}">{{value_bank[0]}}</ion-option>
+                          
+                        </ion-select>
+                    </ion-item>
+                    <button ion-button  full (click)="get_withdraw_history()">ขั้นตอนถัดไป</button>
+                </ion-list>
+              </ion-card-content >
+          </ion-card>
+      </ion-list>
+    </div>
+</ion-content>

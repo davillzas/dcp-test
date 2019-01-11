@@ -1,0 +1,45 @@
+<!--
+  Generated template for the CollectionsPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar color="primary" >
+    <!-- <ion-title>{{category_name}}</ion-title> -->
+    <img src="assets/img/logo/app-10.png" alt="" width="150px" height="40px" style="align-items: center">
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="collections">
+    <div class="padding">
+        <ion-item >
+            <ion-label>เลือกร้านค้าตามจากจังหวัด</ion-label>
+            <ion-select [ngModel]="city_id" (ionChange)="show_city_id($event)">
+                <ion-option *ngFor="let city of value_city"  value="{{city.city_id}}" >{{ city.city_name }}</ion-option> 
+            </ion-select>
+        </ion-item>
+    </div>
+    <br>
+
+
+  <img src="assets/img/payment/click_city.png" style="width : auto ; height : auto; margin: auto;"  [hidden]="city_name != null">
+  <ion-list>
+    <ion-item padding color="light"  class="no-border" (click)="goTo_location_home()" [hidden]="city_name == null">
+        <ion-icon name="pin"></ion-icon>
+          เปิดจากแผนที่ :   {{ city_name }}
+        <ion-icon name="arrow-forward" color="secondary"  class="pull-right"></ion-icon>
+    </ion-item>
+    <ion-item class="margin-top catagory" *ngFor="let group of groupList ; let i = index;" (click)="viewCustomer(group.data_group.group_id)" [ngStyle]="{'background-image': 'url(' + group.data_group.group_img + ')'  , 'background-size' : '100%' , 'height' : '100%'}">
+       
+      <div class="item-info" >
+        <div class="text-sm light">
+            <span class="rating">จำนวนร้านค้า {{group.data_sum_group.sum_group}} ร้าน</span>
+        </div>
+        
+        <h3 class="light">{{group.data_group.group_name}} </h3>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-navbar color="primary" hideBackButton="true">
+    <div>
+      <img src="assets/img/logo/app-10.png" alt="" width="150px" height="40px" style="align-items: center">
+    </div>
+
+    <!--<ion-buttons end>
+      <button ion-button>
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+
+</ion-buttons>-->
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+
+      <!-- username-->
+
+    </ion-refresher-content>
+  </ion-refresher>
+  <!-- Profile -->
+  <ion-item-group>
+
+    <ion-item class="no-border">
+
+      <ion-avatar item-left>
+        <img src="{{this.user_pic}}" alt="">
+      </ion-avatar>
+      <span class="strong">{{this.name}}</span><br>
+      <span style="color: '{{color}}' ">DPC Reward : {{ this.point}} </span>
+
+<!--<ion-icon name="ios-arrow-forward" item-right></ion-icon>--><br>
+
+    </ion-item>
+    <ion-item-divider bgColor>โปรไฟล์</ion-item-divider>
+    <ion-item (click)="edit_account()">
+      <ion-icon name="md-create"></ion-icon>
+      แก้ไขโปรไฟล์
+    </ion-item>
+    <ion-item (click)="link_advisor()">
+      <ion-icon name="people"></ion-icon>
+      Link การแนะนำ
+    </ion-item>
+    <ion-item (click)="report_user()">
+    <ion-icon name="md-albums"></ion-icon>
+      รายงาน
+    </ion-item>
+    <ion-item (click)="user_distcount()">
+      <ion-icon name="qr-scanner"></ion-icon>
+      รายงานการใช้จ่าย
+    </ion-item>
+    <ion-item (click)="withdraw()">
+      <ion-icon name="logo-bitcoin"></ion-icon>
+      Reward แลก DPC Coin
+    </ion-item>
+    <ion-item (click)="call_center()">
+      <ion-icon name="contacts"></ion-icon>
+      ติดต่อเจ้าหน้าที่
+    </ion-item>
+    <!--<ion-item (click)="user_payment(value_data[0].user_id)">
+      <ion-icon name="card" ></ion-icon>
+      การยืนยันตัวตน
+    </ion-item>-->
+
+    <ion-item (click)="exit()">
+      <ion-icon name="exit"></ion-icon>
+      ออกจากระบบ
+    </ion-item>
+    <!-- <ion-item>
+      <ion-icon name="timer"></ion-icon>
+      
+    </ion-item>
+    <ion-item>
+      <ion-icon name="pricetags"></ion-icon>
+      Saved Offers
+    </ion-item> -->
+
+  </ion-item-group>
+
+  <!-- Other -->
+  <!-- <ion-item-group>
+    <ion-item-divider bgColor>OTHERS</ion-item-divider>
+    <ion-item>
+      <ion-icon name="podium"></ion-icon>
+      Leaderboard
+    </ion-item>
+    <ion-item>
+      <ion-icon name="person-add"></ion-icon>
+      Find foodies
+    </ion-item>
+    <ion-item>
+      <ion-icon name="home"></ion-icon>
+      Suggest a restaurant
+    </ion-item>
+    <ion-item>
+      <ion-icon name="md-share"></ion-icon>
+      Invite friend
+    </ion-item>
+    <ion-item>
+      <ion-icon name="send"></ion-icon>
+      Send feedback
+    </ion-item>
+    <ion-item>
+      <ion-icon name="ios-information-circle"></ion-icon>
+      About
+    </ion-item>
+    <ion-item>
+      <ion-icon name="star"></ion-icon>
+      Rate us
+    </ion-item>
+    <ion-item>
+      <ion-icon name="ios-exit"></ion-icon>
+      Sign out
+    </ion-item>
+  </ion-item-group> -->
+</ion-content>

@@ -1,0 +1,82 @@
+
+<ion-header>
+  <ion-navbar color="primary" >
+    <img src="assets/img/logo/app-10.png" alt="" width="150px" height="40px" style="align-items: center">
+
+    
+  </ion-navbar>
+</ion-header>
+
+<ion-content class=" common-bg">
+  <ion-card *ngFor="let customer of customerList" (click)="viewCustomerHomepage(customer.customer_id)">
+    <ion-card-header>
+      <!-- title -->
+      <div>
+        <span class="strong"> {{customer.customer_name}}</span>
+        <span class="rating pull-right">คะแนน : {{customer.vote_sum}} Vote</span>
+      </div>
+
+      <!--sub title-->
+      <div class="uppercase text-sm secondary">
+        <br>
+        {{customer.customer_address}}
+      </div>
+
+      <!-- extra info -->
+      <div class="text-sm secondary" padding-bottom>
+        {{customer.sum_review}} Reviews <!--&bull;
+         Bookmarks &bull;
+         Been There-->
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4 class="secondary">ข้อมูลร้าน</ion-col>
+          <ion-col width-66>{{customer.customer_detail}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4 class="secondary">รับเงินคืน</ion-col>
+          <ion-col width-66>{{ customer.discout[0].discout}} </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4 class="secondary">ที่จอดรถ </ion-col>
+          <ion-col width-66>{{customer.customer_parking}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4 class="secondary">เวลาทำการ</ion-col>
+          <ion-col width-66>{{customer.work_time_open}}  ถึง  {{customer.work_time_close}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-4 class="secondary">วันเปิดร้าน </ion-col>
+            <ion-col width-66>{{customer.work_day}}  </ion-col>
+        </ion-row>
+        <ion-row [hidden]="customer.work_day_stop == 'ไม่พบข้อมูล'">
+            <ion-col col-4 class="secondary">วันปิดร้าน </ion-col>
+            <ion-col width-66>{{customer.work_day_stop}}  </ion-col>
+        </ion-row>
+      
+         <ion-row>
+         
+           <ion-col col-4>
+            <img class="round" src="{{customer.pic_head[0].img}}" alt="" width="100%" height="100%">
+
+          </ion-col>
+          <ion-col col-4>
+       
+            <img class="round" src="{{customer.pic_head[1].img}}" alt="" width="100%" height="100%">
+   
+          </ion-col>
+          <ion-col col-4>
+           
+            <img class="round" src="{{customer.pic_head[2].img}}" alt="" width="100%" height="100%">
+
+          </ion-col> 
+         
+        </ion-row>  
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>
